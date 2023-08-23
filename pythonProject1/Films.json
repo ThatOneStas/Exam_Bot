@@ -1,0 +1,98 @@
+[
+  {
+    "film_info": {
+      "img": "imgs/Majors.png",
+      "text": "Назва: Інструкція з виховання мажорів\nЖанр: Комедія\nhttps://tinyurl.com/28ytwb54\nКод: 1"
+    },
+    "film_ganre": "Комедія",
+    "film_code": 1
+  },
+  {
+    "film_info": {
+      "img": "imgs/WowkZWollStrit.png",
+      "text": "Назва: Вовк з Уолл-стріт\nЖанр: Комедія, Драма, Кримінал\nhttps://tinyurl.com/3fpdfrdx\nКод: 2"
+    },
+    "film_ganre": "Комедія",
+    "film_code": 2
+  },
+    {
+    "film_info": {
+      "img": "imgs/BulletTrain.png",
+      "text": "Назва: Швидкісний поїзд\nЖанр: Бойовик, Екшн, Комедія\nhttps://tinyurl.com/58dxyju8\nКод: 3"
+    },
+    "film_ganre": "Бойовик",
+    "film_code": 3
+  },
+  {
+    "film_info": {
+      "img": "imgs/TopGun.png",
+      "text": "Назва: Топ Ґан: Меверік\nЖанр: Драма, Екшн, Пригоди\nhttps://tinyurl.com/bdf6j6t5\nКод: 4"
+    },
+    "film_ganre": "Драма",
+    "film_code": 4
+  },
+  {
+    "film_info": {
+      "img": "imgs/AstralRedDoor.png",
+      "text": "Назва: Астрал: Червоні двері\nЖанр: Жахи, Детектив\nhttps://tinyurl.com/yt43t9b2\nКод: 5"
+    },
+    "film_ganre": "Жахи",
+    "film_code": 5
+  },
+  {
+    "film_info": {
+      "img": "imgs/MurrderInEastExpress.png",
+      "text": "Назва: Вбивство у «Східному експресі»\nЖанр: Детектив, Кримінал\nhttps://tinyurl.com/4zt9awms\nКод: 6"
+    },
+    "film_ganre": "Детектив",
+    "film_code": 6
+  },
+  {
+    "film_info": {
+      "img": "imgs/AvatarWaterWay.png",
+      "text": "Назва: Аватар: Шлях води\nЖанр: Фантастика, Пригоди\nhttps://tinyurl.com/ycyajhrc\nКод: 7"
+    },
+    "film_ganre": "Фантастика",
+    "film_code": 7
+  },
+  {
+    "film_info": {
+      "img": "imgs/DocStrange.png",
+      "text": "Назва: Доктор Стрендж (Серія фільмів)\nЖанр: Екшн, Фантастика\n\nКод: 8"
+    },
+    "film_ganre": "Фантастика",
+    "film_code": 8
+  },
+  {
+    "film_info": {
+      "img": "imgs/LutaNichka.png",
+      "text": "Назва: Люта нічка\nЖанр: Триллер, Екшн, Пригоди\nhttps://tinyurl.com/tuk8fbsw\nКод: 9"
+    },
+    "film_ganre": "Бойовик",
+    "film_code": 9
+  },
+  {
+    "film_info": {
+      "img": "imgs/Taxi.png",
+      "text": "Назва: Таксі (Серія фільмів)\nЖанр: Комедія, Екшн\nhttps://tinyurl.com/mpvterxv\nКод: 10"
+    },
+    "film_ganre": "Комедія",
+    "film_code": 10
+  },
+  {
+    "film_info": {
+      "img": "imgs/Scream.png",
+      "text": "Назва: Крик 2022 року (Включає серію фільмів)\nЖанр: Фантастика, Пригоди\nhttps://tinyurl.com/bddt6rmb\nКод: 11"
+    },
+    "film_ganre": "Жахи",
+    "film_code": 11
+  },
+  {
+    "film_info": {
+      "img": "imgs/DeathOnNile.png",
+      "text": "Назва: Смерть на Нілі\nЖанр: Детектив, Кримінал, Драма\nhttps://tinyurl.com/yc3kns7t\nКод: 12"
+    },
+    "film_ganre": "Детектив",
+    "film_code": 12
+  }
+]
