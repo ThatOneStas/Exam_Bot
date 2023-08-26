@@ -1,11 +1,14 @@
 import json
 import random
+import main
 
 with open('Films.json', 'r', encoding='utf-8') as file_films:
 	Films = json.load(file_films)
 with open('Serials.json', 'r', encoding='utf-8') as file_serials:
 	Serials = json.load(file_serials)
 
+	# ---- GanresFunc ----
+	# ---- GanresFunc ----
 def Comedy(FilmsOrSerials, cid):
 	for film in FilmsOrSerials:
 		if film["film_ganre"] == 'Комедія':
@@ -36,8 +39,9 @@ def Horror(FilmsOrSerials, cid):
 		if film["film_ganre"] == 'Жахи':
 			photo = open(film["film_info"]['img'], 'rb')
 			bot.send_photo(cid, photo, caption=film["film_info"]['text'], reply_markup=ganres_reply_menu())
-	# ---- Codes&Random ----
-	# ---- Codes&Random ----
+
+# 	# ---- Codes&Random ----
+# 	# ---- Codes&Random ----
 def Random(FilmsOrSerials, cid):
 	randomized = random.randint(1, len(FilmsOrSerials))
 	for film in FilmsOrSerials:

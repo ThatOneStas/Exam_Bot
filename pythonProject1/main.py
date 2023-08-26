@@ -2,6 +2,7 @@ import telebot
 from telebot import types
 import json
 import random
+# import Functions as func
 
 bot = telebot.TeleBot("6653300108:AAFhPJp_q2eu2iUTj-6c4p757X9k8jHNWpw")
 
@@ -66,8 +67,8 @@ def Horror(FilmsOrSerials, cid):
 			photo = open(film["film_info"]['img'], 'rb')
 			bot.send_photo(cid, photo, caption=film["film_info"]['text'], reply_markup=ganres_reply_menu())
 
-	# ---- Codes&Random ----
-	# ---- Codes&Random ----
+# 	# ---- Codes&Random ----
+# 	# ---- Codes&Random ----
 def Random(FilmsOrSerials, cid):
 	randomized = random.randint(1, len(FilmsOrSerials))
 	for film in FilmsOrSerials:
@@ -202,7 +203,6 @@ def echo_all(msg):
 	elif msg.text == '🔎 Пошук за жанрами' and counters['menu_films'] == 1:
 		bot.send_message(cid, '🕹 Оберіть жанр', reply_markup=ganres_reply_menu())
 		counters['menu_films'] += 1
-
 
 	elif msg.text == '😄 Комедія':
 		if counters['film_serial'] == 1:
