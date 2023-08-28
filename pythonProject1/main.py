@@ -104,9 +104,34 @@ def Codes(msg):
 		except Exception as wrong_code:
 			bot.send_message(cid, CodeErrText(), reply_markup=first_reply_menu())
 
-# ---- Return&CodeErr Text ----
-# ---- Return&CodeErr Text ----
+def Names(msg):
+	cid = msg.chat.id
+	name = msg.text
 
+	if counters["film_serial"] == 1:
+		try:
+			for film in Films:
+				if name.lower() == film["film_name"].lower():
+					photo = open(film["film_info"]['img'], 'rb')
+					bot.send_photo(cid, photo, caption=film["film_info"]['text'], reply_markup=first_reply_menu())
+				# elif name.lower() != film["film_name"].lower():
+				# 	return 1 / 0
+		except Exception as wrong_code:
+			bot.send_message(cid, NameErrText(), reply_markup=first_reply_menu())
+
+	elif counters["film_serial"] == 2:
+		try:
+			for film in Films:
+				if name.lower() == film["film_name"].lower():
+					photo = open(film["film_info"]['img'], 'rb')
+					bot.send_photo(cid, photo, caption=film["film_info"]['text'], reply_markup=first_reply_menu())
+				# elif name.lower() != film["film_name"].lower():
+				# 	return 1 / 0
+		except Exception as wrong_code:
+			bot.send_message(cid, NameErrText(), reply_markup=first_reply_menu())
+
+# ---- Return&CodeErr Text ----
+# ---- Return&CodeErr Text ----
 def ReturnText():
 	randomized = random.randint(1, 3)
 	if randomized == 1:
@@ -125,6 +150,14 @@ def CodeErrText():
 	elif randomized == 3:
 		return "Такого коду не має 🥲"
 
+def NameErrText():
+	randomized = random.randint(1, 3)
+	if randomized == 1:
+		return "Невірна назва 🚫"
+	elif randomized == 2:
+		return "Назва недійсна ⚠"
+	elif randomized == 3:
+		return "Такої назви не має 🥲"
 # --	-- REPLY_MENUS SECTION --	--
 # --	-- REPLY_MENUS SECTION --	--
 
@@ -136,7 +169,7 @@ def main_reply_menu():
 
 def first_reply_menu():
 	markup_films1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-	markup_films1.row(types.KeyboardButton('🔎 Пошук за жанрами'), types.KeyboardButton('🔎 Пошук за кодом'))
+	markup_films1.row(types.KeyboardButton('🔎 Пошук за жанрами'), types.KeyboardButton('🔎 Пошук за назвою/кодом'))
 	markup_films1.row(types.KeyboardButton('🎲 Випадкове'), types.KeyboardButton('↩ Назад'))
 	return markup_films1
 
@@ -151,6 +184,12 @@ def ganres_reply_menu():
 def about_us_reply_menu():
 	markup_films2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
 	markup_films2.row(types.KeyboardButton('💻 Про Бот'), types.KeyboardButton('📃 Про Нас'))
+	markup_films2.row(types.KeyboardButton('↩ Назад'))
+	return markup_films2
+
+def search_reply_menu():
+	markup_films2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+	markup_films2.row(types.KeyboardButton('🔎 Пошук за назвою'), types.KeyboardButton('🔎 Пошук за кодом'))
 	markup_films2.row(types.KeyboardButton('↩ Назад'))
 	return markup_films2
 
@@ -241,8 +280,16 @@ def echo_all(msg):
 			Random(Films, cid)
 		elif counters['film_serial'] == 2:
 			Random(Serials, cid)
-# ---	- CODES -	---
-# ---	- CODES -	---
+# ---	- NAMES&CODES -	---
+# ---	- NAMES&CODES -	---
+	elif msg.text == '🔎 Пошук за назвою/кодом':
+		bot.send_message(cid, "🕹 Оберіть метод пошуку", reply_markup=search_reply_menu())
+		counters['menu_films'] += 1
+
+	elif msg.text == '🔎 Пошук за назвою':
+		mess = bot.send_message(cid, "Введіть назву:")
+		bot.register_next_step_handler(mess, Names)
+
 	elif msg.text == '🔎 Пошук за кодом':
 		mess = bot.send_message(cid, "Введіть код:")
 		bot.register_next_step_handler(mess, Codes)
