@@ -18,10 +18,10 @@ with open('Serials.json', 'r', encoding='utf-8') as file_serials:
 
 # --	-- Values -- 	--
 # --	-- Values -- 	--
-
 counters = {
     "menu_films": 0,
-	"film_serial": 0   # 1 - films 2 - serials
+	"film_serial": 0,   # 1 - films 2 - serials
+	"search_err": 0,
 }
 texts = {
 	"about_bot": "Бот був створений студентом академії IT-Step для екзамену."
@@ -88,9 +88,9 @@ def Codes(msg):
 				for film in Films:
 					if int(film["film_code"]) == int(code):
 						photo = open(film["film_info"]['img'], 'rb')
-						bot.send_photo(cid, photo, caption=film["film_info"]['text'], reply_markup=first_reply_menu())
+						bot.send_photo(cid, photo, caption=film["film_info"]['text'], reply_markup=search_reply_menu())
 		except Exception as wrong_code:
-			bot.send_message(cid, CodeErrText(), reply_markup=first_reply_menu())
+			bot.send_message(cid, CodeErrText(), reply_markup=search_reply_menu())
 
 	elif counters["film_serial"] == 2:
 		try:
@@ -100,35 +100,31 @@ def Codes(msg):
 				for serial in Serials:
 					if int(serial["film_code"]) == int(code):
 						photo = open(serial["film_info"]['img'], 'rb')
-						bot.send_photo(cid, photo, caption=serial["film_info"]['text'], reply_markup=first_reply_menu())
+						bot.send_photo(cid, photo, caption=serial["film_info"]['text'], reply_markup=search_reply_menu())
 		except Exception as wrong_code:
-			bot.send_message(cid, CodeErrText(), reply_markup=first_reply_menu())
+			bot.send_message(cid, CodeErrText(), reply_markup=search_reply_menu())
 
 def Names(msg):
 	cid = msg.chat.id
 	name = msg.text
 
 	if counters["film_serial"] == 1:
-		try:
-			for film in Films:
-				if name.lower() == film["film_name"].lower():
-					photo = open(film["film_info"]['img'], 'rb')
-					bot.send_photo(cid, photo, caption=film["film_info"]['text'], reply_markup=first_reply_menu())
-				# elif name.lower() != film["film_name"].lower():
-				# 	return 1 / 0
-		except Exception as wrong_code:
-			bot.send_message(cid, NameErrText(), reply_markup=first_reply_menu())
+		for film in Films:
+			if name.lower() == film["film_name"].lower():
+				photo = open(film["film_info"]['img'], 'rb')
+				bot.send_photo(cid, photo, caption=film["film_info"]['text'], reply_markup=search_reply_menu())
+				counters["search_err"] = 1
+
 
 	elif counters["film_serial"] == 2:
-		try:
-			for film in Films:
-				if name.lower() == film["film_name"].lower():
-					photo = open(film["film_info"]['img'], 'rb')
-					bot.send_photo(cid, photo, caption=film["film_info"]['text'], reply_markup=first_reply_menu())
-				# elif name.lower() != film["film_name"].lower():
-				# 	return 1 / 0
-		except Exception as wrong_code:
-			bot.send_message(cid, NameErrText(), reply_markup=first_reply_menu())
+		for serial in Serials:
+			if name.lower() == serial["film_name"].lower():
+				photo = open(serial["film_info"]['img'], 'rb')
+				bot.send_photo(cid, photo, caption=serial["film_info"]['text'], reply_markup=search_reply_menu())
+				counters["search_err"] = 1
+
+	if counters["search_err"] == 0:
+		bot.send_message(cid, NameErrText(), reply_markup=search_reply_menu())
 
 # ---- Return&CodeErr Text ----
 # ---- Return&CodeErr Text ----
